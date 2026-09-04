@@ -9,7 +9,22 @@ class Request extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $fillable = [
+    'request_number',
+    'client_id',
+    'category_id',
+    'subject',
+    'description',
+    'priority',
+    'status',
+    'assigned_to',
+    'due_date',
+    'created_by',
+];
+
+    protected $casts = [
+        'due_date' => 'date',
+    ];
 
     public function client()
     {
@@ -21,18 +36,13 @@ class Request extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function assigned_user()
-    {
-        return $this->belongsTo(User::class, 'assigned_to');
-    }
-
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function request_activities()
+    public function assignee()
     {
-        return $this->hasMany(RequestActivity::class);
+        return $this->belongsTo(User::class, 'assigned_to');
     }
 }

@@ -7,7 +7,7 @@
     
     <!-- Welcome Section -->
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8">
-        <h2 class="text-2xl font-bold text-slate-800 mb-2">Welcome back, Admin! 👋</h2>
+        <h2 class="text-2xl font-bold text-slate-800 mb-2">Welcome back, {{ auth()->user()->name }}! 👋</h2>
         <p class="text-slate-600">Here's what's happening with your client requests today.</p>
     </div>
 
@@ -39,7 +39,7 @@
             icon='<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>' 
         />
         <x-stat-card 
-            title="Rejected" 
+            title="Cancelled" 
             value="{{ $rejectedRequests }}" 
             trend="-2%" 
             color="red" 
@@ -69,7 +69,7 @@
                     <div class="flex items-center"><div class="w-3 h-3 rounded-full bg-amber-400 mr-2 shrink-0"></div> <span class="truncate">Pending ({{ $newRequests }})</span></div>
                     <div class="flex items-center"><div class="w-3 h-3 rounded-full bg-blue-500 mr-2 shrink-0"></div> <span class="truncate">In Progress ({{ $inProgressRequests }})</span></div>
                     <div class="flex items-center"><div class="w-3 h-3 rounded-full bg-emerald-400 mr-2 shrink-0"></div> <span class="truncate">Completed ({{ $completedRequests }})</span></div>
-                    <div class="flex items-center"><div class="w-3 h-3 rounded-full bg-rose-500 mr-2 shrink-0"></div> <span class="truncate">Rejected ({{ $rejectedRequests }})</span></div>
+                    <div class="flex items-center"><div class="w-3 h-3 rounded-full bg-rose-500 mr-2 shrink-0"></div><span class="truncate"> Cancelled ({{ $rejectedRequests }})</span></div>
                 </div>
             </div>
         </div>

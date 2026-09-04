@@ -10,18 +10,19 @@ class Client extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'kode_client',
+        'nama_client',
+        'nama_perusahaan',
         'email',
-        'phone',
-        'company',
-        'address',
-        'status',
+        'no_telepon',
+        'alamat',
+        'is_active',
     ];
 
-    /**
-     * Relationship: a client has many requests.
-     * Ready for future module development.
-     */
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
     public function requests()
     {
         return $this->hasMany(Request::class);

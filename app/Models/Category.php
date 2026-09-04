@@ -9,10 +9,14 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'name',
+        'description',
+        'status',
+    ];
 
     public function requests()
-    {
-        return $this->hasMany(Request::class);
-    }
+{
+    return $this->hasMany(Request::class);
+}
 }
